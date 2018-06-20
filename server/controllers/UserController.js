@@ -11,6 +11,7 @@ class UserController{
 					errors:errs
 				});
 			}else{
+				let user = new User(req.body);
 
 				bcrypt.hash(req.body.password,8,function(err,hash){
 					if(err){

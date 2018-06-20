@@ -1,3 +1,6 @@
+let Listing = require("mongoose").model("Listing");
+let User    = require("mongoose").model("User");
+
 class ListingController{
 	create(req,res){
 		if(!req.session.uid){
