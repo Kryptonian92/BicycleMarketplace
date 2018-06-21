@@ -16,9 +16,8 @@ app.use(flash());
 
 app.use(session({
 	secret:"1kjagsdailusdyoiausyd",
-	resave:false,
-	saveUnitialized:true,
-	cookie:{maxAge:60000}
+	// resave:false,
+	// saveUnitialized:true
 }));
 
 require("./server/config/mongoose.js");

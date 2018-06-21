@@ -1,0 +1,27 @@
+<h1>Login:</h1>
+
+{{ logger | json }}
+
+
+<div *ngFor="let error of errors">
+	<h1>{{error}}</h1>
+</div>
+
+<form (submit)="login()">
+	<p>Email:<input type="text" name="logger.email" [(ngModel)]="logger.email"></p>
+	<p>Password:<input type="text" name="logger.password" [(ngModel)]="logger.password"></p>
+	<input type="submit" value="Login">
+</form>
+
+<h1>Register:</h1>
+
+{{ registrar | json }}
+
+<form (submit)="register()">
+	<p>First:<input type="text" name="registrar.first" [(ngModel)]="registrar.first"></p>
+	<p>Last:<input type="text" name="registrar.last" [(ngModel)]="registrar.last"></p>
+	<p>Email:<input type="text" name="registrar.email" [(ngModel)]="registrar.email"></p>
+	<p>Password:<input type="text" name="registrar.password" [(ngModel)]="registrar.password"></p>
+	<p>Confirm:<input type="text" name="registrar.confirm" [(ngModel)]="registrar.confirm"></p>
+	<input type="submit" value="Register">
+</form>
