@@ -1,0 +1,9 @@
+<h1>Bike Of The Day!</h1>
+
+<div *ngIf="lotd" class="listing">
+	<img src="{{lotd.img}}" width="200" >
+	<h1>{{lotd.title}}</h1>	
+	<p>{{lotd.description}}</p>	
+	<h1>{{lotd.price}}</h1>	
+	<p>{{lotd.location}}</p>	
+</div>

@@ -1,7 +1,10 @@
+let Listing = require("mongoose").model("Listing");
+let User    = require("mongoose").model("User");
+
 class ListingController{
 	create(req,res){
 		if(!req.session.uid){
-			return res.status(403).json({
+			return res.json({
 				message:"You must be logged in to create a listing!",
 				errors:"You must be logged in to create a listing!"
 			});
@@ -11,7 +14,7 @@ class ListingController{
 		listing.user = req.session.uid;
 		listing.save(err=>{
 			if(err){
-				return res.status(403).json({
+				return res.json({
 					message:"Failed to save listing.",
 					errors:err					
 				});
@@ -22,23 +25,22 @@ class ListingController{
 
 						user.save(err=>{
 							if(err){
-								return res.status(403).json({
+								return res.json({
 									message:"Failed to find user!",
 									error:err
 								});
 							}else{
-								return res.status(200).json(listing);
+								console.log("CREATED LISTING");
+								return res.json(listing);
 							}
 						});
 					}else{
-						return res.status(404).json({
+						return res.json({
 							message:"Failed to find user!",
 							error:err
 						});
 					}
 				});
-
-				return res.status(200).json(listing);
 			}
 		});
 	}
@@ -50,12 +52,12 @@ class ListingController{
 		})
 		.exec((err,listings)=>{
 			if(err){
-				return res.status(403).json({
+				return res.json({
 					message:"Failed to populate listing's user for listing: "+listing._id,
 					errors:err
 				});
 			}else{
-				return res.status(200).json(listings);
+				return res.json(listings);
 			}
 		})
 	}
@@ -67,12 +69,12 @@ class ListingController{
 		})
 		.exec((err,listing)=>{
 			if(err){
-				return res.status(403).json({
+				return res.json({
 					message:"Failed to populate listing's user for listing: "+listing._id,
 					errors:err
 				});
 			}else{
-				return res.status(200).json(listing);
+				return res.json(listing);
 			}
 		})
 	}
@@ -87,12 +89,12 @@ class ListingController{
 
 				listing.save(err=>{
 					if(err){
-						return res.status(403).json({
+						return res.json({
 							message:"Failed to update listing: "+listing._id,
 							errors:err
 						});
 					}else{
-						return res.status(200).json(listing);
+						return res.json(listing);
 					}
 				});
 			}else{
@@ -106,20 +108,27 @@ class ListingController{
 			if(listing){
 				Listing.remove({_id:req.params.id},(err)=>{
 					if(err){
-						return res.status(404).json({
+						return res.json({
 							message:"Failed to remove listing: "+req.params._id,
 							errors:err
 						}); 
 					}else{
-						return res.status(200).json(listing);
+						return res.json(listing);
 					}
 				});
 			}else{
-				return res.status(404).json({
+				return res.json({
 					message:"Failed to find listing:"+req.params.id,
 					errors:err
 				});
 			}
+		});
+	}
+
+	lotd(req,res){
+		Listing.find({},(err,listings)=>{
+			let rand = Math.floor(Math.random()*listings.length);
+			return res.json(listings[rand]);
 		});
 	}
 }
