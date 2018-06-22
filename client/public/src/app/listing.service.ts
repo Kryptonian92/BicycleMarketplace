@@ -25,4 +25,8 @@ export class ListingService {
 		this.http.delete("/api/listings/"+listing._id)
 		.subscribe(data=>cb(data));
 	}
+	lotd(cb){
+		this.http.get("/api/listings/lotd")
+		.subscribe(data=>cb(data));
+	}
 }

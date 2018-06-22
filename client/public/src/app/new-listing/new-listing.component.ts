@@ -37,7 +37,20 @@ export class NewListingComponent implements OnInit {
 
 	create(){
 		this.ls.create(this.listing,(data)=>{
+			console.log(data);
 			this.listings.push(data);
 		});
+	}
+
+	onDelete(data){
+		let index;
+
+		for(let i=0; i<this.listings.length;i++){
+			if(this.listings[i]._id == data._id){
+				index = i;
+			}
+		}
+
+		this.listings.splice(index,1);
 	}
 }

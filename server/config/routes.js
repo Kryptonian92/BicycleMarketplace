@@ -12,6 +12,7 @@ module.exports = function(app){
 	/*ListingController*/
 	app.post("/api/listings",ListingController.create);
 	app.get("/api/listings",ListingController.all);
+	app.get("/api/listings/lotd",ListingController.lotd);
 	app.get("/api/listings/:id",ListingController.findById);
 	app.put("/api/listings/:id",ListingController.update);
 	app.delete("/api/listings/:id",ListingController.destroy);

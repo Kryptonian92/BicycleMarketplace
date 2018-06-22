@@ -12,6 +12,6 @@
 	<input type="submit" value="Create Listing">
 </form>
 
-<div *ngFor="let listing of listings">
-	<h1>{{listing.title}}</h1>
-</div>
+<h1>Edit / Update Listings</h1>
+
+<app-update-listing (emitter)="onDelete($event)" *ngFor="let listing of listings" [listing]="listing" ></app-update-listing>

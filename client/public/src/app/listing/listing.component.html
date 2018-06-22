@@ -1,3 +1,19 @@
-<p>
-  listing works!
-</p>
+<hr>
+
+<div class="listing">
+	<img src="{{listing.img}}" width="200">
+	<h1>{{listing.title}}</h1>
+	<p>{{listing.description}}</p>
+	<h1>${{listing.price}}</h1>
+	<p>{{listing.location}}</p>
+
+	<form *ngIf="listing.user._id == uid" (submit)="destroy()">
+		<input type="submit" value="DESTROY">
+	</form>
+
+	<form *ngIf="listing.user._id != uid" (submit)="contact()">
+		<input type="submit" value="CONTACT">
+	</form>
+</div>
+
+<hr>

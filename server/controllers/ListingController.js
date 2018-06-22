@@ -124,6 +124,13 @@ class ListingController{
 			}
 		});
 	}
+
+	lotd(req,res){
+		Listing.find({},(err,listings)=>{
+			let rand = Math.floor(Math.random()*listings.length);
+			return res.json(listings[rand]);
+		});
+	}
 }
 
 module.exports = new ListingController();

@@ -1,3 +1,17 @@
-<p>
-  update-listing works!
-</p>
+<form (submit)="update()">
+	<img src="{{listing.img}}" alt="{{listing.img}}" width="200">
+
+	<p>Image:<input type="text" name="listing.img" [(ngModel)]="listing.img"></p>	
+	<p>Title:<input type="text" name="listing.title" [(ngModel)]="listing.title"></p>
+	<p>Description:<input type="text" name="listing.description" [(ngModel)]="listing.description"></p>
+	<p>Price:<input type="text" name="listing.price" [(ngModel)]="listing.price"></p>
+	<p>Location:<input type="text" name="listing.location" [(ngModel)]="listing.location"></p>
+
+	<input type="submit" value="Update">
+
+	<form (submit)="destroy()">
+		<input type="submit" value="Delete">		
+	</form>
+</form>
+
+<hr>

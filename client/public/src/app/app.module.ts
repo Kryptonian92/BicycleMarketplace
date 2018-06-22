@@ -16,6 +16,8 @@ import {FormsModule} from "@angular/forms";
 import {UserService} from "./user.service";
 import {ListingService} from "./listing.service";
 import { AppRoutingModule } from './/app-routing.module';
+import { LotdComponent } from './lotd/lotd.component';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AppRoutingModule } from './/app-routing.module';
     ListingComponent,
     NewListingComponent,
     UserListingsComponent,
-    UpdateListingComponent
+    UpdateListingComponent,
+    LotdComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
