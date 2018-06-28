@@ -1,3 +1,4 @@
+//server file
 let express    = require("express");
 let session    = require("express-session");
 let flash      = require("express-flash");
